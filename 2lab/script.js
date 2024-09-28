@@ -33,6 +33,5 @@ function displayMovies() {
         document.getElementById('movieTable').appendChild(table);
     }
 }
-
 // Вызов функции для отображения фильмов
 displayMovies();
