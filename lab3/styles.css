@@ -1,79 +1,69 @@
-/* Основные стили для body */
+
 body {
-  font-family: 'Roboto'; /* Устанавливаем шрифт для всего документа */
-  margin: 0;            /* Убираем отступы вокруг body */
-  padding: 0;           /* Убираем внутренние отступы для body */
+  font-family: 'Roboto'; 
+  margin: 0;            
+  padding: 0;           
 }
 
-/* Контейнер для контента */
 .container {
-  max-width: 1200px; /* Максимальная ширина контейнера */
-  margin: 0 auto;    /* Центрируем контейнер по горизонтали */
+  max-width: 1200px; 
+  margin: 0 auto;    
 }
 
-/* Стили для заголовка первого уровня */
 h1 {
-  text-align: center; /* Выравниваем текст по центру */
-  margin-bottom: 50px; /* Устанавливаем отступ снизу */
+  text-align: center; 
+  margin-bottom: 50px; 
 }
 
-/* Стили для сетки карточек */
 .grid {
-  display: grid; /* Используем CSS Grid для расположения карточек */
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Автоматически заполняем строки карточками, минимальная ширина 220px */
-  gap: 15px; /* Отступы между карточками */
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+  gap: 15px; 
 }
 
-/* Стили для карточки */
 .card {
-  background-color: white; /* Цвет фона карточки */
-  border: 1px solid #333; /* Цвет и стиль границы */
-  cursor: pointer; /* Указываем, что карточка кликабельна */
-  border-radius: 15px; /* Закругляем углы карточки */
-  overflow: hidden; /* Скрываем все, что выходит за границы карточки */
-  text-align: center; /* Выравниваем текст по центру карточки */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Добавляем тень к карточке */
-  transition: transform 0.2s; /* Плавный переход для эффекта масштабирования */
+  background-color: white; 
+  border: 1px solid #333; 
+  cursor: pointer; 
+  border-radius: 15px; 
+  overflow: hidden; 
+  text-align: center; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.2s; 
 }
 
-/* Эффект при наведении на карточку */
 .card:hover {
-  transform: scale(1.01); /* Увеличиваем карточку при наведении */
+  transform: scale(1.01); 
 }
 
-/* Стили для изображения в карточке */
 .card img {
-  width: 100%; /* Изображение занимает всю ширину карточки */
-  height: auto; /* Высота изображения автоматически подстраивается */
+  width: 100%; 
+  height: auto; 
 }
 
-/* Стили для заголовка карточки */
 .card-title {
-  font-size: 20px; /* Размер шрифта для заголовка */
-  margin: 10px 0; /* Отступы сверху и снизу */
+  font-size: 20px; 
+  margin: 10px 0; 
 }
 
-/* Стили для текста карточки */
 .card-text {
-  color: #555; /* Цвет текста */
-  margin: 10px 0; /* Отступы сверху и снизу */
+  color: #555; 
+  margin: 10px 0; 
 }
 
-/* Стили для кнопок */
 .button {
-  background-color: #333; /* Цвет фона кнопки */
-  color: white; /* Цвет текста кнопки */
-  border: none; /* Убираем границу у кнопки */
-  padding: 10px 20px; /* Внутренние отступы для кнопки */
-  margin: 10px 0; /* Отступы сверху и снизу */
-  cursor: pointer; /* Указываем, что кнопка кликабельна */
-  border-radius: 10px; /* Закругляем углы кнопки */
-  transition: background-color 0.3s; /* Плавный переход для изменения цвета фона */
-  margin-right: 3px; /* Отступ справа */
-  margin-left: 3px; /* Отступ слева */
+  background-color: #333; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  margin: 10px 0; 
+  cursor: pointer; 
+  border-radius: 10px; 
+  transition: background-color 0.3s; 
+  margin-right: 3px; 
+  margin-left: 3px; 
 }
 
-/* Эффект при наведении на кнопку */
 .button:hover {
-  background-color: #555; /* Изменяем цвет фона кнопки при наведении */
+  background-color: #555; 
 }
