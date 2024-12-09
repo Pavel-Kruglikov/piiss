@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         target.addEventListener('dblclick', stickToMouse);
         target.addEventListener('touchstart', stickToMouse);
 
-        target.addEventListener('click', unstickFromMouse);
+        target.addEventListппner('click', unstickFromMouse);
         target.addEventListener('touchend', unstickFromMouse);
     });
 
