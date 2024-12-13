@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подробности футболки</title>
+    <style>
+        /* Ваши стили для страницы */
+    </style>
+</head>
+<body>
+
+    <h1 id="shirtName"></h1> <!-- Название футболки -->
+    <div class="shirt-details">
+        <img id="shirtImage" src="" alt="Shirt Image"> <!-- Картинка футболки -->
+        <div class="shirt-info">
+            <h2 id="shirtPrice"></h2> <!-- Цена -->
+            <p id="shirtDescription"></p> <!-- Описание -->
+    
+            <!-- Выбор стороны (Front/Back) -->
+            <p>Side: 
+                <button id="frontButton">Front</button>
+                <button id="backButton">Back</button>
+            </p>
+    
+            <!-- Выбор цвета -->
+            <p>Color: 
+                <span id="colorOptions"></span> <!-- Кнопки цветов -->
+            </p>
+        </div>
+    </div>
+    
+    <!-- Кнопка возврата к списку маек -->
+    <button id="backToShirts">Вернуться к каталогу</button>
+    
+    <script>
+        // Получаем данные из localStorage
+        const shirt = JSON.parse(localStorage.getItem('selectedShirt'));
+    
+        // Текущий выбранный цвет и сторона
+        let selectedColor = 'white';
+        let selectedSide = 'front';
+    
+        if (shirt) {
+            // Отображаем данные о футболке
+            document.getElementById('shirtName').textContent = shirt.name;
+            document.getElementById('shirtPrice').textContent = shirt.price;
+            document.getElementById('shirtDescription').textContent = shirt.description;
+    
+            // По умолчанию показываем переднюю сторону белого цвета
+            const shirtImage = document.getElementById('shirtImage');
+            shirtImage.src = shirt.colors[selectedColor].front;
+    
+            // Генерация кнопок для выбора цвета
+            const colorOptions = document.getElementById('colorOptions');
+            for (let color in shirt.colors) {
+                const colorButton = document.createElement('button');
+                colorButton.textContent = color.charAt(0).toUpperCase() + color.slice(1);
+                colorButton.style.backgroundColor = color;
+                
+                // Обработчик клика на цветную кнопку
+                colorButton.addEventListener('click', () => {
+                    selectedColor = color; // Сохраняем выбранный цвет
+                    shirtImage.src = shirt.colors[selectedColor][selectedSide]; // Показываем переднюю или заднюю сторону в выбранном цвете
+                });
+                colorOptions.appendChild(colorButton);
+            }
+    
+            // Обработчики для выбора стороны футболки
+            document.getElementById('frontButton').addEventListener('click', () => {
+                selectedSide = 'front'; // Обновляем выбранную сторону
+                shirtImage.src = shirt.colors[selectedColor].front;
+            });
+    
+            document.getElementById('backButton').addEventListener('click', () => {
+                selectedSide = 'back'; // Обновляем выбранную сторону
+                shirtImage.src = shirt.colors[selectedColor].back;
+            });
+        } else {
+            // Если данных нет, показываем сообщение
+            document.body.innerHTML = '<h1>No shirt selected</h1>';
+        }
+    
+        // Обработчик для кнопки возврата к списку маек
+        document.getElementById('backToShirts').addEventListener('click', () => {
+            window.location.href = 'maika.html'; // Перенаправляем на maika.html
+        });
+    </script>
+    
+    </body>
+    </html>

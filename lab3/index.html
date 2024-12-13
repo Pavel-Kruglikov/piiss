@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин футболок</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .shirt-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-evenly;
+        }
+        .shirt-card {
+            border: 2px solid #1a1a5c;
+            border-radius: 10px;
+            width: 200px;
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .shirt-card img {
+            width: 150px;
+            height: 200px;
+        }
+        .shirt-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .shirt-description {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        .shirt-price {
+            color: #1a1a5c;
+            font-size: 16px;
+        }
+        .btn {
+            background-color: #1a1a5c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+        .btn:hover {
+            background-color: #555;
+        }
+        
+        #quickViewModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        #quickViewContent {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        #quickViewContent img {
+            width: 250px;
+        }
+        #closeModal {
+            background-color: #ff0000;
+            padding: 5px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Наши футболки</h1>
+<div class="shirt-container" id="shirtContainer"></div>
+
+<div id="quickViewModal">
+    <div id="quickViewContent">
+        <span id="closeModal">Close</span>
+        <h2 id="modalShirtName"></h2>
+        <img id="modalShirtImage" src="" alt="Shirt Preview">
+        <p id="modalShirtDescription"></p>
+        <p id="modalShirtPrice"></p>
+    </div>
+</div>
+
+<script src="shirts.js"></script> <!--подключение джски-->
+<script>
+    function generateShirts() {
+        const shirtContainer = document.getElementById('shirtContainer');
+        
+        shirts.forEach((shirt, index) => {
+            const card = document.createElement('div');
+            card.classList.add('shirt-card');
+
+            const img = document.createElement('img');
+            const firstColor = Object.keys(shirt.colors)[0];
+            img.src = shirt.colors[firstColor]?.front || shirt.default.front;
+            card.appendChild(img);
+
+            const name = document.createElement('div');
+            name.classList.add('shirt-name');
+            const nameText = document.createTextNode(shirt.name);
+            name.appendChild(nameText);
+            card.appendChild(name);
+
+            const description = document.createElement('div');
+            description.classList.add('shirt-description');
+            const descriptionText = document.createTextNode(shirt.description);description.appendChild(descriptionText);
+            card.appendChild(description);
+
+            const price = document.createElement('div');
+            price.classList.add('shirt-price');
+            const priceText = document.createTextNode(shirt.price);
+            price.appendChild(priceText);
+            card.appendChild(price);
+
+            const quickViewBtn = document.createElement('button');
+            quickViewBtn.classList.add('btn');
+            quickViewBtn.textContent = "Quick View";
+            quickViewBtn.onclick = () => showQuickView(index);
+            card.appendChild(quickViewBtn);
+
+            const seePageBtn = document.createElement('button');
+            seePageBtn.classList.add('btn');
+            seePageBtn.textContent = "See Page";
+            card.appendChild(seePageBtn);
+
+            shirtContainer.appendChild(card);
+        });
+    }
+    
+    function showQuickView(index) {
+        const shirt = shirts[index];
+        const firstColor = Object.keys(shirt.colors)[0];
+
+        const modalShirtName = document.createTextNode(shirt.name);
+        document.getElementById('modalShirtName').textContent = shirt.name;
+        document.getElementById('modalShirtImage').src = shirt.colors[firstColor]?.front || shirt.default.front;
+        document.getElementById('modalShirtDescription').textContent = shirt.description;
+        document.getElementById('modalShirtPrice').textContent = shirt.price;
+
+        document.getElementById('quickViewModal').style.display = "flex";
+    }
+
+    document.getElementById('closeModal').onclick = function() {
+        document.getElementById('quickViewModal').style.display = "none";
+    };
+    generateShirts();
+
+</script>
+
+</body>
+</html>
