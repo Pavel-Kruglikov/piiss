@@ -1,0 +1,86 @@
+@font-face {
+    font-family: 'PianistFont';
+    src: url('fonts/dehinted-HandveticaNeue-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ForrestGumpFont';
+    src: url('fonts/Bimbo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'SeventeenMomentsFont';
+    src: url('fonts/Debut.ttf') format('truetype');
+}
+
+body {
+    background-color: #e0f7fa; 
+    margin: 0;
+}
+
+.container {
+    max-width: 1440px; 
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+.film-list {
+    list-style-type: none; 
+    padding: 0;
+}
+
+.film-list li {
+    margin-bottom: 10px;
+}
+
+.film-list a {
+    color: black; 
+    text-decoration: none; 
+}
+
+.image-container {
+    display: flex;
+    justify-content: flex-start; 
+    flex-wrap: wrap; 
+}
+
+img {
+    width: 200px; 
+    border-radius: 10px; 
+    margin: 10px;
+}
+
+table {
+    width: 100%; 
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.film1-description {
+    text-align: center; 
+    font-family: 'PianistFont'; 
+}
+
+.film2-description {
+    text-align: justify; 
+    font-family: 'ForrestGumpFont'; 
+}
+
+.film3-description {
+    text-align: left; 
+    font-family: 'SeventeenMomentsFont'; 
+}
